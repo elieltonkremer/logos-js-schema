@@ -20,8 +20,20 @@ class ArrayDataType extends NativeDataType {
             throw new ValidationError('not array value');
         }
         let new_array = [];
-        for (let item of data) {
-            new_array.push(await this.delegate.toJS(item, configuration.items));
+        let errors = {};
+        for (let i=0; i < data.length; i++) {
+            try {
+                new_array.push(await this.delegate.toJSON(data[i], configuration.items));
+            } catch (e) {
+                if (e instanceof ValidationError) {
+                    errors[i] = e.message;
+                } else {
+                    errors[i] = e.toString();
+                }
+            }
+        }
+        if (Object.keys(errors).length !== 0) {
+            throw new ValidationError(errors);
         }
         return new_array;
     }
@@ -32,8 +44,20 @@ class ArrayDataType extends NativeDataType {
             throw new ValidationError('not array value');
         }
         let new_array = [];
-        for (let item of data) {
-            new_array.push(await this.delegate.toJSON(item, configuration.items));
+        let errors = {};
+        for (let i=0; i < data.length; i++) {
+            try {
+                new_array.push(await this.delegate.toJSON(data[i], configuration.items));
+            } catch (e) {
+                if (e instanceof ValidationError) {
+                    errors[i] = e.message;
+                } else {
+                    errors[i] = e.toString();
+                }
+            }
+        }
+        if (Object.keys(errors).length !== 0) {
+            throw new ValidationError(errors);
         }
         return new_array;
     }
