@@ -53,7 +53,7 @@ class StringDataType extends NativeDataType {
             if (configuration.choices) {
                 let choices = configuration.choices;
                 if (choices instanceof Function || choices instanceof (async function() {}).constructor) {
-                    choices = await choices();
+                    choices = await choices(this.context);
                 }
                 if (!Array.isArray(choices)) {
                     throw new ValidationError('invalid choices configuration');

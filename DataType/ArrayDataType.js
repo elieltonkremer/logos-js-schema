@@ -8,8 +8,8 @@ class ArrayDataType extends NativeDataType {
     /**
      * @param {ArrayDataType} delegate
      */
-    constructor(delegate) {
-        super();
+    constructor(delegate, context) {
+        super(context);
         this.delegate = delegate;
     }
 

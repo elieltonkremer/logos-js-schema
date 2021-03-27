@@ -13,30 +13,40 @@ module.exports = {
         'app.data_type.object': new ServiceResource(
             'logos-schema/DataType/ObjectDataType',
             [
-                '%app.data_type%'
+                '%app.data_type%',
+                '%context%'
             ]
         ),
         'app.data_type.array': new ServiceResource(
             'logos-schema/DataType/ArrayDataType',
             [
-                '%app.data_type%'
+                '%app.data_type%',
+                '%context%'
             ]
         ),
         'app.data_type.string': new ServiceResource(
             'logos-schema/DataType/StringDataType',
-            []
+            [
+                '%context%'
+            ]
         ),
         'app.data_type.number': new ServiceResource(
             'logos-schema/DataType/NumberDataType',
-            []
+            [
+                '%context%'
+            ]
         ),
         'app.data_type.date': new ServiceResource(
             'logos-schema/DataType/DateSchemaDataType',
-            []
+            [
+                '%context%'
+            ]
         ),
         'app.data_type.integer': new ServiceResource(
             'logos-schema/DataType/IntegerDataType',
-            []
+            [
+                '%context%'
+            ]
         )
     })
 }
